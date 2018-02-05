@@ -1,11 +1,11 @@
 package com.devnexus.workshop.junit5;
 
-import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
+
 import org.junit.*;
 import org.junit.rules.*;
 
-import com.devnexus.workshop.junit5.Earthquake;
 import com.devnexus.workshop.junit5.Earthquake.*;
 
 public class EarthquakeTest {

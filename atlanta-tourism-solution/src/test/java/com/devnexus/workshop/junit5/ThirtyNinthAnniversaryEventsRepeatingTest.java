@@ -10,8 +10,6 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.*;
 
-import com.devnexus.workshop.junit5.ThirtyNinthAnniversaryEvents;
-
 @DisplayName("Repeating vs Parameterized")
 public class ThirtyNinthAnniversaryEventsRepeatingTest {
 

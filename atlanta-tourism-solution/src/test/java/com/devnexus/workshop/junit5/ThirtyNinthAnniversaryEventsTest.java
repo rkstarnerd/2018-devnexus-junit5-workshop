@@ -13,8 +13,6 @@ import org.junit.runner.*;
 import org.junit.runners.*;
 import org.junit.runners.Parameterized.*;
 
-import com.devnexus.workshop.junit5.ThirtyNinthAnniversaryEvents;
-
 @RunWith(Parameterized.class)
 public class ThirtyNinthAnniversaryEventsTest {
 	

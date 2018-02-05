@@ -2,12 +2,12 @@ package com.devnexus.workshop.junit5;
 
 import java.time.*;
 
-public enum FishermansWharfEnum {
-	STORES(22), RESTAURANTS(23), FOOD_CARTS(21);
+public enum CentennialOlympicParkEnum {
+	PARK(23), AQUARIUM(21);
 
 	private LocalTime closing;
 
-	FishermansWharfEnum(int closingHour) {
+	CentennialOlympicParkEnum(int closingHour) {
 		closing = LocalTime.of(closingHour, 0);
 	}
 

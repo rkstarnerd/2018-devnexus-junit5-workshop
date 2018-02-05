@@ -2,15 +2,13 @@ package com.devnexus.workshop.junit5;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
+
 import java.time.*;
 
 import org.junit.*;
 import org.junit.runner.*;
 import org.mockito.*;
 import org.mockito.junit.*;
-
-import com.devnexus.workshop.junit5.CableCarSchedule;
-import com.devnexus.workshop.junit5.CableCarWait;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CableCarWaitTest {

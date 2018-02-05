@@ -5,8 +5,6 @@ import static org.junit.Assert.*;
 import org.assertj.core.api.*;
 import org.junit.*;
 
-import com.devnexus.workshop.junit5.CableCars;
-
 public class CableCarsTest {
 
 	@Test

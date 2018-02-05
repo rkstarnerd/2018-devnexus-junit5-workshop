@@ -8,8 +8,6 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.*;
 
-import com.devnexus.workshop.junit5.ThirtyNinthAnniversaryEvents;
-
 public class ThirtyNinthAnniversaryEventsValueSourceTest {
 
 	@ParameterizedTest(name = "{0}")

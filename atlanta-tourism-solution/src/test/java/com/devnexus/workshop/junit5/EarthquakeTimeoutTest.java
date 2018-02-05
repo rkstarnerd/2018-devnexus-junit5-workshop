@@ -2,8 +2,6 @@ package com.devnexus.workshop.junit5;
 
 import org.junit.*;
 
-import com.devnexus.workshop.junit5.Earthquake;
-
 public class EarthquakeTimeoutTest {
 
 	private Earthquake earthquake;
