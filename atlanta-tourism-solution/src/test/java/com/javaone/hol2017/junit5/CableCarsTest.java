@@ -1,29 +1,26 @@
 package com.javaone.hol2017.junit5;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.*;
-
+import org.assertj.core.api.*;
+import org.junit.*;
 
 public class CableCarsTest {
-	
+
 	@Test
 	public void numberLines() {
-		System.out.println("hi");
 		int actual = CableCars.getNumberLines();
 		assertEquals(3, actual);
 	}
-
+	
 	@Test
 	public void namesOfLines() {
-
-		assertAll("lines",
-				() -> assertTrue(CableCars.isLine("California"), "California"),
-				() -> assertTrue(CableCars.isLine("Powell-Hyde"), "Powell-Hyde"),
-				() -> assertTrue(CableCars.isLine("Powell-Mason"), "Powell-Mason"),
-				() -> assertFalse(CableCars.isLine("San Francisco"), "San Francisco")
-
-		);
+		SoftAssertions softly = new SoftAssertions();
+		softly.assertThat(CableCars.isLine("California")).isTrue().as("California");
+		softly.assertThat(CableCars.isLine("Powell-Hyde")).isTrue().as("Powell-Hyde");
+		softly.assertThat(CableCars.isLine("Powell-Mason")).isTrue().as("Powell-Mason");
+		softly.assertThat(CableCars.isLine("San Francisco")).isFalse().as("San Francisco");
+		softly.assertAll();
 	}
 
 }

@@ -1,10 +1,11 @@
 package com.javaone.hol2017.junit5;
 
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
+
 import java.time.*;
 
-import org.junit.jupiter.api.*;
+import org.junit.*;
 
 public class FishermansWharfEnumTest {
 

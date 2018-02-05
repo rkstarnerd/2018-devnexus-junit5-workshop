@@ -1,17 +1,15 @@
 package com.javaone.hol2017.junit5;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
-
 import java.time.*;
 
-import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.*;
+import org.junit.*;
+import org.junit.runner.*;
 import org.mockito.*;
+import org.mockito.junit.*;
 
-import name.falgout.jeffrey.testing.junit5.*;
-
-@ExtendWith(MockitoExtension.class)
+@RunWith(MockitoJUnitRunner.class)
 public class CableCarWaitTest {
 
 	@Mock
@@ -19,7 +17,7 @@ public class CableCarWaitTest {
 
 	CableCarWait target;
 
-	@BeforeEach
+	@Before
 	public void setUp() {
 		target = new CableCarWait(mockSchedule);
 	}

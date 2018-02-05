@@ -1,22 +1,21 @@
 package com.javaone.hol2017.junit5;
 
+import static org.junit.Assert.*;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.*;
+import org.junit.*;
 
 public class FishermansWharfTest {
 
 	private FishermansWharf wharf;
 
-	@BeforeEach
+	@Before
 	public void createWharf() {
 		wharf = new FishermansWharf();
 	}
 
 	@Test
 	public void url() {
-		assertEquals("http://www.fishermanswharf.org", wharf.getUrl(), "url");
+		assertEquals("url", "http://www.fishermanswharf.org", wharf.getUrl());
 	}
 	
 	@Test
@@ -37,7 +36,7 @@ public class FishermansWharfTest {
 		wharf.addSeaLion(new SeaLion(10, 150, false));
 		wharf.addSeaLion(new SeaLion(15, 200, true));
 		SeaLion actual = wharf.getOldestSeaLion().get();
-		assertEquals(15, actual.getAge(), "oldest");
+		assertEquals("oldest", 15, actual.getAge());
 	}
 
 }

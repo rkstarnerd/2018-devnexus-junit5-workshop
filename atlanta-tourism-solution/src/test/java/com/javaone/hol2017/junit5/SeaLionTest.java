@@ -1,8 +1,8 @@
 package com.javaone.hol2017.junit5;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.*;
+import org.junit.*;
 
 /*
  * Clearly this test doesn't cover all the cases, but good enough o show JUnit 5 ;)
@@ -12,13 +12,13 @@ public class SeaLionTest {
 	private static SeaLion seaLion1;
 	private static SeaLion seaLion2;
 
-	@BeforeAll
+	@BeforeClass
 	public static void createSeaLions() {
 		seaLion1 = new SeaLion(1, 75, true);
 		seaLion2 = new SeaLion(2, 125, false);
 	}
 
-	@AfterAll
+	@AfterClass
 	public static void tearDown() {
 		seaLion1 = null;
 		seaLion2 = null;
@@ -26,15 +26,15 @@ public class SeaLionTest {
 
 	@Test
 	public void hashCodeValues() {
-		assertEquals(seaLion1.hashCode(), seaLion1.hashCode(), "same");
-		assertNotEquals(seaLion1.hashCode(), seaLion2.hashCode(), "different");
+		assertEquals("same", seaLion1.hashCode(), seaLion1.hashCode());
+		assertNotEquals("different", seaLion1.hashCode(), seaLion2.hashCode());
 	}
 
 	@Test
 	public void equalsValues() {
-		assertTrue(seaLion1.equals(seaLion1), "same");
-		assertFalse(seaLion1.equals(null), "null");
-		assertFalse(seaLion1.equals(seaLion2), "different");
+		assertTrue("same", seaLion1.equals(seaLion1));
+		assertFalse("null", seaLion1.equals(null));
+		assertFalse("different", seaLion1.equals(seaLion2));
 	}
 
 }

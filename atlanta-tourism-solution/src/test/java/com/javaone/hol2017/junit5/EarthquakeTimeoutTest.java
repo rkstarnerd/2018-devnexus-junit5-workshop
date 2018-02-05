@@ -1,23 +1,19 @@
 package com.javaone.hol2017.junit5;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.time.*;
-
-import org.junit.jupiter.api.*;
+import org.junit.*;
 
 public class EarthquakeTimeoutTest {
 
 	private Earthquake earthquake;
 
-	@BeforeEach
+	@Before
 	public void setUp() {
 		earthquake = new Earthquake();
 	}
 
-	@Test
+	@Test(timeout = 6000)
 	public void timeout() {
-		assertTimeout(Duration.ofSeconds(6), () -> earthquake.waitForAftershock());
+		earthquake.waitForAftershock();
 	}
 
 }

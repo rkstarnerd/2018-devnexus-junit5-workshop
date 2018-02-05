@@ -1,12 +1,12 @@
+repositories {
+    mavenCentral()
+}
+
 apply plugin: 'java'
 
 // force using Java 1.8 (not tested with java 9)
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
 
 dependencies {
     
@@ -16,6 +16,18 @@ dependencies {
    		testCompile 'org.mockito:mockito-core:2.9.0'
    		testCompile 'org.assertj:assertj-core:3.6.2'
    	}	 
+   	
+test {
+   afterSuite { desc, result ->
+    	     if (!desc.parent)
+        		println("${result.resultType} " +
+            "(${result.testCount} tests, " +
+            "${result.successfulTestCount} successes, " +
+            "${result.failedTestCount} failures, " +
+            "${result.skippedTestCount} skipped)")
+   }
+}
+
 }
 
 
