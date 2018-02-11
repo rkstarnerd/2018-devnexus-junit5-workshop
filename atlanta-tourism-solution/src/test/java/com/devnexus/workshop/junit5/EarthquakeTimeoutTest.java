@@ -5,6 +5,7 @@ import java.time.*;
 
 import org.junit.jupiter.api.*;
 
+@Tag("slow")
 public class EarthquakeTimeoutTest {
 
 	private Earthquake earthquake;

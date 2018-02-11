@@ -40,4 +40,9 @@ dependencies {
 
 junitPlatform {
     details 'tree'
+    filters {
+       tags {
+            exclude 'slow'
+        }
+    }
 }
