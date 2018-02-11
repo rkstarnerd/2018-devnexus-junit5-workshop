@@ -5,7 +5,8 @@ import static org.hamcrest.Matchers.*;
 
 import java.time.*;
 
-import org.junit.*;
+import org.junit.jupiter.api.*;
+
 
 public class CentennialOlympicParkEnumParamTest {
 
