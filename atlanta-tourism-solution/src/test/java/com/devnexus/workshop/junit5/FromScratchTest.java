@@ -10,7 +10,7 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.*;
 
-public class TestFromScratch {
+public class FromScratchTest {
 
 	@BeforeAll
 	static void check() {
@@ -26,7 +26,7 @@ public class TestFromScratch {
 	static IntStream primeGenerator() {
 		// no point in sending even numbers to the prime tester
 		return IntStream.iterate(5, n -> n + 2)
-				.filter(TestFromScratch::isPrime)
+				.filter(FromScratchTest::isPrime)
 				.limit(20);
 	}
 
