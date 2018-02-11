@@ -8,21 +8,21 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.*;
 
-public class ThirtyNinthAnniversaryEventsValueSourceTest {
+public class OlympicsDatesValueSourceTest {
 
 	@ParameterizedTest(name = "{0}")
-	@ValueSource(strings= {"2017-01-06", "2017-02-17", "2017-10-06", "2017-10-13"})
+	@ValueSource(strings = { "1996-07-19", "1996-07-20", "1996-07-31", "1996-08-03", "1996-08-04" })
 	public void specialDates(String formattedDate) {
 		LocalDate date = LocalDate.parse(formattedDate);
-		boolean actual = ThirtyNinthAnniversaryEvents.isCelebrationDay(date);
+		boolean actual = OlympicsDates.isCompetitionDay(date);
 		assertTrue(actual);
 	}
-	
+
 	@ParameterizedTest(name = "{0}")
-	@ValueSource(strings= {"2016-12-30", "2017-01-05", "2017-02-16", "2017-10-20"})
+	@ValueSource(strings = { "1996-07-18", "1996-08-05", "1997-07-18", "1995-08-01" })
 	public void notSpecialDates(String formattedDate) {
 		LocalDate date = LocalDate.parse(formattedDate);
-		boolean actual = ThirtyNinthAnniversaryEvents.isCelebrationDay(date);
+		boolean actual = OlympicsDates.isCompetitionDay(date);
 		assertFalse(actual);
 	}
 

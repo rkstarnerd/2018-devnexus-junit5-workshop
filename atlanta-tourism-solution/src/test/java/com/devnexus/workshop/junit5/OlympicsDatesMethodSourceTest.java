@@ -10,34 +10,30 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.*;
 
-public class ThirtyNinthAnniversaryEventsMethodSourceTest {
+public class OlympicsDatesMethodSourceTest {
 
 	@ParameterizedTest(name = "{0}")
 	@MethodSource("specialDateGenerator")
 	public void specialDates(LocalDate date) {
-		boolean actual = ThirtyNinthAnniversaryEvents.isCelebrationDay(date);
+		boolean actual = OlympicsDates.isCompetitionDay(date);
 		assertTrue(actual);
 	}
 
 	@ParameterizedTest(name = "{0}")
 	@MethodSource("nonSpecialDateGenerator")
 	public void notSpecialDates(LocalDate date) {
-		boolean actual = ThirtyNinthAnniversaryEvents.isCelebrationDay(date);
+		boolean actual = OlympicsDates.isCompetitionDay(date);
 		assertFalse(actual);
 	}
 
 	public static List<LocalDate> specialDateGenerator() {
-		return Arrays.asList(LocalDate.of(2017, 1, 6),
-				LocalDate.of(2017, 2, 17),
-				LocalDate.of(2017, 10, 6),
-				LocalDate.of(2017, 10, 13));
+		return Arrays.asList(LocalDate.of(1996, 7, 19), LocalDate.of(1996, 7, 20), LocalDate.of(1996, 7, 31),
+				LocalDate.of(1996, 8, 3), LocalDate.of(1996, 8, 4));
 	}
 
 	public static Stream<LocalDate> nonSpecialDateGenerator() {
-		return Stream.of(LocalDate.of(2016, 12, 30),
-				LocalDate.of(2017, 1, 5),
-				LocalDate.of(2017, 2, 16),
-				LocalDate.of(2017, 10, 20));
+		return Stream.of(LocalDate.of(1996, 7, 18), LocalDate.of(1996, 8, 5), LocalDate.of(1997, 7, 18),
+				LocalDate.of(1995, 8, 1));
 	}
 
 	@Test

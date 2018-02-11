@@ -14,14 +14,14 @@ import org.junit.runners.*;
 import org.junit.runners.Parameterized.*;
 
 @RunWith(Parameterized.class)
-public class ThirtyNinthAnniversaryEventsTest {
+public class OlympicsDatesTest {
 	
 	@Parameter(0) public LocalDate date;
 	@Parameter(1) public boolean expectedResult;
 
 	@Parameters(name="{0}")
 	public static Collection<Object[]> testCases() throws IOException {
-		Path path = Paths.get("src/test/resources", "39-tests.txt");
+		Path path = Paths.get("src/test/resources", "olympics-tests.txt");
 		return Files.lines(path)
 				// remove blank and commented out lines
 				.filter(l -> ! l.isEmpty())
@@ -36,7 +36,7 @@ public class ThirtyNinthAnniversaryEventsTest {
 	
 	@Test
 	public void date() {
-		boolean actual = ThirtyNinthAnniversaryEvents.isCelebrationDay(date);
+		boolean actual = OlympicsDates.isCompetitionDay(date);
 		assertEquals(expectedResult, actual);
 	}
 

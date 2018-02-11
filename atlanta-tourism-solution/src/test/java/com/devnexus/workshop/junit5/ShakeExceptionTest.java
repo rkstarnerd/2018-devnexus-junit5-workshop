@@ -1,14 +1,14 @@
 package com.devnexus.workshop.junit5;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.*;
+import org.junit.jupiter.api.*;
 
 import com.devnexus.workshop.junit5.Earthquake.*;
 
 public class ShakeExceptionTest {
 
-	@Test @Ignore("this test is ignored becuase it is unnecessary")
+	@Test @Disabled
 	public void message() {
 		String expected = "message";
 		ShakeException actual = new ShakeException(expected);

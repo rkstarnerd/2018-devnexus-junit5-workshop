@@ -20,14 +20,14 @@ public class ThirtyNinthAnniversaryEventsRepeatingTest {
 		int dayOfYear = random.nextInt(365);
 		LocalDate firstOfYear = LocalDate.of(2016, Month.JANUARY, 1);
 		LocalDate date = firstOfYear.plusDays(dayOfYear);
-		assertFalse(ThirtyNinthAnniversaryEvents.isCelebrationDay(date));
+		assertFalse(OlympicsDates.isCompetitionDay(date));
 	}
 	
 	@DisplayName("π is fun. Even \uD83D\uDE38 like π.")
 	@ParameterizedTest
 	@MethodSource("randomDatesIn2016")
 	void stillTooEarly(LocalDate date) {
-		assertFalse(ThirtyNinthAnniversaryEvents.isCelebrationDay(date));
+		assertFalse(OlympicsDates.isCompetitionDay(date));
 	}
 	
 	static List<LocalDate> randomDatesIn2016() {
