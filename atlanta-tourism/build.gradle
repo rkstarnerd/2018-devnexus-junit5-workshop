@@ -16,7 +16,8 @@ dependencies {
    		testCompile 'org.mockito:mockito-core:2.9.0'
    		testCompile 'org.assertj:assertj-core:3.6.2'
    	}	 
-   	
+}
+
 test {
    afterSuite { desc, result ->
     	     if (!desc.parent)
@@ -28,6 +29,5 @@ test {
    }
 }
 
-}
 
 
