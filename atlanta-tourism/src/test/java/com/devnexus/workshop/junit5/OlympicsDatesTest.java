@@ -1,43 +1,33 @@
 package com.devnexus.workshop.junit5;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+import java.time.LocalDate;
 
-import java.io.*;
-import java.nio.file.*;
-import java.time.*;
-import java.util.*;
-import java.util.stream.*;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import org.junit.*;
-import org.junit.runner.*;
-import org.junit.runners.*;
-import org.junit.runners.Parameterized.*;
-
-@RunWith(Parameterized.class)
 public class OlympicsDatesTest {
 	
-	@Parameter(0) public LocalDate date;
-	@Parameter(1) public boolean expectedResult;
-
-	@Parameters(name="{0}")
-	public static Collection<Object[]> testCases() throws IOException {
-		Path path = Paths.get("src/test/resources", "olympics-tests.txt");
-		return Files.lines(path)
-				// remove blank and commented out lines
-				.filter(l -> ! l.isEmpty())
-				.filter(l -> ! l.startsWith("#"))
-				// convert to array
-				.map(l -> l.split(","))
-				// convert to desired types for parameterized test
-				.map(a -> new Object[] { LocalDate.parse(a[0]), Boolean.parseBoolean(a[1])} )
-				// store in collection
-				.collect(Collectors.toList());
+	@ParameterizedTest(name = "{0}")
+	@ValueSource(strings = { "1996-07-19", "1996-07-20", "1996-07-31", "1996-08-03", 
+			"1996-08-04" })
+	public void specialDates(String formattedDate) {
+		boolean actual = OlympicsDates.isCompetitionDay(getLocalDate(formattedDate));
+		assertTrue(actual);
+	}
+	
+	@ParameterizedTest(name = "{0}")
+	@ValueSource(strings = { "1996-07-18", "1996-08-05", "1997-07-18", "1995-08-01" })
+	public void notSpecialDates(String formattedDate) {
+		boolean actual = OlympicsDates.isCompetitionDay(getLocalDate(formattedDate));
+		assertFalse(actual);
 	}
 	
 	@Test
-	public void date() {
-		boolean actual = OlympicsDates.isCompetitionDay(date);
-		assertEquals(expectedResult, actual);
+	public void dummyTestSoRuns() { }
+	
+	private LocalDate getLocalDate(String formattedDate) {
+		return LocalDate.parse(formattedDate);
 	}
-
 }

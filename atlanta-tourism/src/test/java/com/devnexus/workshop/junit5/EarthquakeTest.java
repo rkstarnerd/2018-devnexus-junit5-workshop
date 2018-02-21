@@ -1,45 +1,26 @@
 package com.devnexus.workshop.junit5;
 
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.MatcherAssert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.*;
-import org.junit.rules.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import com.devnexus.workshop.junit5.Earthquake.*;
+import com.devnexus.workshop.junit5.Earthquake.ShakeException;
 
 public class EarthquakeTest {
 
-	@Rule
-	public ExpectedException expected = ExpectedException.none();
-
 	private Earthquake earthquake;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		earthquake = new Earthquake();
 	}
 
-	@Test(expected = ShakeException.class)
-	public void noMessageChecking() {
-		earthquake.shake(true);
-	}
-
-	@Test
-	public void usingRule() {
-		expected.expect(ShakeException.class);
-		expected.expectMessage("Wait for the aftershock");
-		earthquake.shake(true);
-	}
-
 	@Test
 	public void usingStandalone() {
-		try {
-			earthquake.shake(true);
-			fail("should throw exception");
-		} catch (ShakeException e) {
-			assertThat(e.getMessage(), containsString("Wait for the aftershock"));
-		}
+		assertThrows(ShakeException.class, () -> earthquake.shake(true));
 	}
 
 }

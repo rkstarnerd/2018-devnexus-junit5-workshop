@@ -1,9 +1,8 @@
 package com.devnexus.workshop.junit5;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.assertj.core.api.*;
-import org.junit.*;
+import org.junit.jupiter.api.Test;
 
 public class GeorgiaAquariumTest {
 
@@ -15,11 +14,11 @@ public class GeorgiaAquariumTest {
 	
 	@Test
 	public void namesOfShows() {
-		SoftAssertions softly = new SoftAssertions();
-		softly.assertThat(GeorgiaAquarium.isShow("Dolphin")).isTrue().as("Dolphin");
-		softly.assertThat(GeorgiaAquarium.isShow("Sea Lion")).isTrue().as("Sea Lion");
-		softly.assertThat(GeorgiaAquarium.isShow("Starfish")).isFalse().as("Starfish");
-		softly.assertAll();
+		assertAll( "lines", 
+			() -> assertTrue(GeorgiaAquarium.isShow("Dolphin"),   "Dolphin"),
+			() -> assertTrue(GeorgiaAquarium.isShow("Sea Lion"),  "Sea Lion"),
+			() -> assertFalse(GeorgiaAquarium.isShow("Starfish"), "Starfish")
+		);
 	}
 
 }

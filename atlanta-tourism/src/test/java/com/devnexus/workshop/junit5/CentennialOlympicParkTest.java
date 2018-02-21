@@ -1,21 +1,20 @@
 package com.devnexus.workshop.junit5;
 
-import static org.junit.Assert.*;
-
-import org.junit.*;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.*;
 
 public class CentennialOlympicParkTest {
 
 	private CentennialOlympicPark park;
 
-	@Before
+	@BeforeEach
 	public void createWharf() {
 		park = new CentennialOlympicPark();
 	}
 
 	@Test
 	public void url() {
-		assertEquals("url", "https://www.gwcca.org/park/", park.getUrl());
+		assertEquals("https://www.gwcca.org/park/", park.getUrl(), "url");
 	}
 	
 	@Test
@@ -36,7 +35,7 @@ public class CentennialOlympicParkTest {
 		park.addBuilding(ParkBuilding.WORLD_CONGRESS);
 		park.addBuilding(ParkBuilding.DOME);
 		ParkBuilding actual = park.getOldestBuilding().get();
-		assertEquals("oldest", 1976, actual.getAge());
+		assertEquals(1976, actual.getAge(), "oldest");
 	}
 
 }

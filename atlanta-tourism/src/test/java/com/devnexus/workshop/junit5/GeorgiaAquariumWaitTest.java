@@ -1,16 +1,22 @@
 package com.devnexus.workshop.junit5;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.when;
 
-import java.time.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Month;
 
-import org.junit.*;
-import org.junit.runner.*;
-import org.mockito.*;
-import org.mockito.junit.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
 
-@RunWith(MockitoJUnitRunner.class)
+import name.falgout.jeffrey.testing.junit5.MockitoExtension;
+
+@ExtendWith(MockitoExtension.class)
 public class GeorgiaAquariumWaitTest {
 
 	@Mock
@@ -20,7 +26,7 @@ public class GeorgiaAquariumWaitTest {
 	
 	private LocalDate saturday;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		target = new GeorgiaAquariumWait(mockSchedule);
 		saturday = LocalDate.of(2017,  Month.FEBRUARY, 24);

@@ -1,8 +1,8 @@
 package com.devnexus.workshop.junit5;
-import static com.devnexus.workshop.junit5.ParkBuilding.*;
-import static org.junit.Assert.*;
 
-import org.junit.*;
+import static com.devnexus.workshop.junit5.ParkBuilding.*;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.*;
 
 /*
  * Clearly this test doesn't cover all the cases, but good enough to show JUnit 5 ;)
@@ -12,7 +12,7 @@ public class ParkBuildingTest {
 	private static ParkBuilding building1 = DOME;
 	private static ParkBuilding building2 = WORLD_CONGRESS;
 
-	@AfterClass
+	@AfterAll
 	public static void tearDown() {
 		building1 = null;
 		building2 = null;
@@ -20,15 +20,15 @@ public class ParkBuildingTest {
 
 	@Test
 	public void hashCodeValues() {
-		assertEquals("same", building1.hashCode(), building1.hashCode());
-		assertNotEquals("different", building1.hashCode(), building2.hashCode());
+		assertEquals(building1.hashCode(), building1.hashCode(), "same");
+		assertNotEquals(building1.hashCode(), building2.hashCode(), "different");
 	}
 
 	@Test
 	public void equalsValues() {
-		assertTrue("same", building1.equals(building1));
-		assertFalse("null", building1.equals(null));
-		assertFalse("different", building1.equals(building2));
+		assertTrue(building1.equals(building1), "same");
+		assertFalse(building1.equals(null), "null");
+		assertFalse(building1.equals(building2), "different");
 	}
 
 }
