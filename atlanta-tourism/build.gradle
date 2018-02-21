@@ -1,33 +1,58 @@
-repositories {
-    mavenCentral()
+buildscript {
+	
+	repositories {
+		mavenCentral()
+	}
+	
+	dependencies {
+		classpath 'org.junit.platform:junit-platform-gradle-plugin:1.0.3'
+	}
 }
 
+repositories { mavenCentral() }
+
+ext.junitPlatformVersion = '1.0.3'
+ext.junitJupiterVersion  = '5.0.3'
+ext.junitVintageVersion  = '4.12.3'
+
 apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.junit.platform.gradle.plugin'
 
 // force using Java 1.8 (not tested with java 9)
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    
-    dependencies {
-  		testCompile 'junit:junit:4.12'
-  		testCompile 'org.hamcrest:hamcrest-all:1.3'
-   		testCompile 'org.mockito:mockito-core:2.9.0'
-   		testCompile 'org.assertj:assertj-core:3.6.2'
-   	}	 
+
+	dependencies {
+		testCompile 'junit:junit:4.12'
+		testCompile 'org.hamcrest:hamcrest-all:1.3'
+		testCompile 'org.mockito:mockito-core:2.9.0'
+		testCompile 'org.assertj:assertj-core:3.6.2'
+		testCompile("org.junit.jupiter:junit-jupiter-api:${junitJupiterVersion}")
+		testRuntime("org.junit.jupiter:junit-jupiter-engine:${junitJupiterVersion}")
+		testCompile("org.junit.jupiter:junit-jupiter-params:${junitJupiterVersion}")
+		testRuntime("org.junit.vintage:junit-vintage-engine:${junitVintageVersion}")
+		// to make Eclipse and IntelliJ happy
+		testRuntime("org.junit.platform:junit-platform-launcher:${junitPlatformVersion}")
+
+	}
 }
 
 test {
-   afterSuite { desc, result ->
-    	     if (!desc.parent)
-        		println("${result.resultType} " +
-            "(${result.testCount} tests, " +
-            "${result.successfulTestCount} successes, " +
-            "${result.failedTestCount} failures, " +
-            "${result.skippedTestCount} skipped)")
-   }
+	afterSuite { desc, result ->
+		if (!desc.parent)
+			println("${result.resultType} " +
+					"(${result.testCount} tests, " +
+					"${result.successfulTestCount} successes, " +
+					"${result.failedTestCount} failures, " +
+					"${result.skippedTestCount} skipped)")
+	}
 }
+
+junitPlatform { details 'tree' }
 
 
 
