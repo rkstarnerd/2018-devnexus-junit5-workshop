@@ -49,7 +49,14 @@ test {
 	}
 }
 
-junitPlatform { details 'tree' }
+junitPlatform { 
+	details 'tree' 
+	filters {
+		tags {
+			exclude 'slow'
+		}
+	}
+}
 
 
 
